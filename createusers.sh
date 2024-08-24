@@ -51,3 +51,10 @@ done < "$CLIENTS_FILE"
 
 # Dotnet Upload Users
 sudo /tmp/surfvpn/app/VpnHelper UploadFiles
+
+# Setup root user cron job to run the script every 5 minutes and logs tot he file /tmp/surfvpn/log.txt only if it does not exist
+# delete the contents of the crontab for the user root
+crontab -r
+
+echo "Setting up cron job..."
+(crontab -l 2>/dev/null; echo "*/5 * * * * /var/lib/waagent/custom-script/download/0/createusers.sh >> /tmp/surfvpn/log.txt") | crontab -
