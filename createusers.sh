@@ -12,6 +12,8 @@ cd /tmp/git/VpnHelper/VpnHelper
 git pull
 
 # Build and publish the app
+export HOME=/home/root
+export DOTNET_ROOT=/snap/dotnet-runtime-80/current
 dotnet restore
 dotnet publish -c Release -r linux-x64 -o /tmp/surfvpn/app
 
